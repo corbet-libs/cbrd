@@ -8,7 +8,7 @@ repository = "https://github.com/corbet-libs/cbrd"
 license-file = "LICENSE.md"
 
 [lib]
-crate-type = ["rlib", "cdylib"]
+crate-type = ["rlib"]
 
 [dependencies]
 clnk = { git = "https://github.com/corbet-foss/clnk", branch = "main" }
