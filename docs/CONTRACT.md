@@ -15,7 +15,9 @@ presence/discovery, Contacts block event plumbing, combined encrypted
 candidate/checkpoint, Groups lifecycle and Attend/Threads ordered room adapters.
 No external notice or key release occurs from local inspection; no fixture
 policy or ready status fills an absent capability. Profile/Contacts/Wallet keep
-their own custody, journals and authority. The only Forum client remains Link.
+their own custody, journals and authority. Link remains the sole Forum connection owner, with separate unlinkable
+authenticated presence/forum and anonymous blind-pass room sessions. The latter
+awaits the generated Forum owner port; it cannot reuse the authenticated session.
 
 Tests exercise real signed Profile preparation/checkpoints, Guard reciprocity
 and Envelope opening across both facade paths on native and actual Wasm.
