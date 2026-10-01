@@ -1,10 +1,23 @@
-# Board contract
+# Board composition contract
 
-Thin composition of Link, Profile, Envelope, Exchange, Search, Groups and Attend. Board is the single member facade reaching the Forum and has no duplicate profile, index, roster or policy engine.
+Board binds one device/community runtime and owns one Link. It delegates local
+public-pair validation to Search and give-first inspection to Exchange. Those
+owners use Profile/Envelope/Guard; Board copies none of their logic or data.
+Every delegated verification must use this Board's fixed community.
 
-All work and inputs are bounded and community scoped. Missing or stale owner
-authority fails closed. Candidate effects are persisted before external output;
-ambiguous persistence must reconcile, never publish speculatively.
+`Status` reflects Link's actual connection state and explicitly unavailable
+Groups/rooms runtime adapters. `GroupView` and `RoomPhase` are direct reexports
+from Groups and Attend for generated consumer schemas, not copied DTOs.
 
-Native and executed wasm vectors, exact reachable line and branch coverage,
-and independent review are required before acceptance.
+Implemented: same-community composition and local validation/inspection, plus
+generated-client challenge forwarding. Pending: production current
+presence/discovery, Contacts block event plumbing, combined encrypted
+candidate/checkpoint, Groups lifecycle and Attend/Threads ordered room adapters.
+No external notice or key release occurs from local inspection; no fixture
+policy or ready status fills an absent capability. Profile/Contacts/Wallet keep
+their own custody, journals and authority. The only Forum client remains Link.
+
+Tests exercise real signed Profile preparation/checkpoints, Guard reciprocity
+and Envelope opening across both facade paths on native and actual Wasm.
+Injected transport refusal only exercises offline propagation; it is not
+network, G3, room or end-to-end evidence.
