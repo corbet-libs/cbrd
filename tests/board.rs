@@ -128,7 +128,16 @@ impl Fixture {
                 &clean,
             )
             .unwrap()
-            .commit_publication(&mut store, [1; 32], vec![])
+            .commit_publication(
+                &mut store,
+                cpfl::Validation {
+                    policy: fixture.policy(),
+                    signed_schema: &fixture.schema,
+                    contact: &clean,
+                },
+                [1; 32],
+                vec![],
+            )
             .await
             .unwrap();
         fixture.wire = store.load_pending().unwrap()[0].bytes.clone();
