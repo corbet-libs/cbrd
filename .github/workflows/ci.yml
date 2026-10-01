@@ -10,6 +10,7 @@ permissions:
 concurrency:
   group: implementation
   cancel-in-progress: false
+  queue: max
 env:
   CARGO_BUILD_JOBS: '2'
   RUST_TEST_THREADS: '2'
