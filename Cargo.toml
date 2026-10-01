@@ -1,0 +1,13 @@
+[package]
+name = "cbrd"
+version = "0.1.0"
+edition = "2024"
+publish = false
+description = "Board for device-side community composition"
+repository = "https://github.com/corbet-libs/cbrd"
+license-file = "LICENSE.md"
+
+[dependencies]
+
+[target.'cfg(target_arch = "wasm32")'.dev-dependencies]
+wasm-bindgen-test = "0.3"
